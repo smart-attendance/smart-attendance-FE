@@ -1,8 +1,6 @@
-import Routers from './routes';
-
 function App() {
   return (
-    <Routers />
+    <div>Halo</div>
   );
 }
 
