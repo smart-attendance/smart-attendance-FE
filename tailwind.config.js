@@ -13,6 +13,9 @@ module.exports = {
           secondary: '#DBA569'
         }
       },
+      backgroundImage: {
+        'cover-side': `url('../src/images/cover.jpg')`
+      }
     },
   },
   plugins: [],
