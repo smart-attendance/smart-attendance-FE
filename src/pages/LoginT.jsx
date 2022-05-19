@@ -5,15 +5,22 @@ import LockIcon from "@mui/icons-material/Lock";
 import { useNavigate } from "react-router-dom";
 
 function LoginT() {
+
+  // const variable use for initiate state
   const initialData = {
     username: "",
     password: "",
   };
 
+  // returns a reference to the dispatch function from the Redux store
   const dispatch = useDispatch();
+  // returns a function that navigate programmatically to other components/pages
   const navigate = useNavigate();
+  
+  // a state that user to store input data
   const [inputData, setInputData] = useState(initialData);
 
+  // a function that use to handle input changes
   const handleInput = (e) => {
     const nameTarget = e.target.name;
     const value = e.target.value;
@@ -23,10 +30,12 @@ function LoginT() {
     });
   };
 
+  // a function that handle submit to sign in / log in
   const handleSignIn = () => {
     dispatch(saveUser({ username: inputData.username }));
     navigate(`/`);
   };
+
   return (
     <div className="bg-orange-200 min-h-screen text-black grid grid-cols-1 lg:grid-cols-12">
       <div className="col-span-1 lg:col-span-12 my-14 mx-16 bg-white grid grid-cols-1 lg:grid-cols-12 shadow-lg rounded-lg h-full">
