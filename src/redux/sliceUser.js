@@ -12,7 +12,7 @@ export const sliceUser = createSlice({
     reducers: {
         // function that use for save user data to global state
         saveUser: (state, action) => {
-            const newUser = {...action.payload}
+            const newUser = { ...action.payload }
             state.users = newUser
         },
         // function that use for delete user data from global state

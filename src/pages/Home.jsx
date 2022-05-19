@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Navbar } from '../components';
 
 function Home() {
+    // extract user data from the Redux store state
     const user = useSelector((state) => state.user.users);
 
     return (

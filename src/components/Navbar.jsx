@@ -7,13 +7,17 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import moment from 'moment'
 
 function Navbar({user}) {
+    // concatenate tailwind utility classes
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ')
     }
 
+    // returns a reference to the dispatch function from the Redux store
     const dispatch = useDispatch();
+    // returns a function that navigate programmatically to other components/pages
     const navigate = useNavigate();
     
+    // to dispatch signOut function & navigate to home page
     const handleSignOut = () => {
         dispatch(deleteUser());
         navigate("/");
