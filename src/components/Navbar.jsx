@@ -19,7 +19,7 @@ function Navbar({user}) {
         navigate("/");
     }
     return (
-        <div className='bg-brown-primary p-4 flex justify-between'>
+        <div className='bg-green-primary p-4 flex justify-between'>
             <div>Smart Attendance</div>
             <div className='flex space-x-3'>
                 <div>{moment(Date.now()).format("DD MMMM, YYYY")}</div>
