@@ -18,6 +18,20 @@ module.exports = {
         'cover-side': `url('../src/images/cover.jpg')`
       }
     },
+    keyframes: {
+      ping: {
+        "0%": {
+          opacity: "25%"
+        },
+        "75%, 100%": {
+          transform: "scale(2)",
+          opacity: "0%"
+        }
+      }
+    },
+    animation: {
+      ping: "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite"
+    }
   },
   plugins: [],
 }
