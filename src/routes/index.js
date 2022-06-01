@@ -2,7 +2,7 @@ import { Provider } from "react-redux"
 import { PersistGate } from "redux-persist/integration/react"
 import { persistor, store } from "../redux/store"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Home, Login } from "../pages";
+import { AdminDash, Home, LoginT } from "../pages";
 import ProtectingRoute from "./protectingRoute";
 
 const Routers = () => {
@@ -12,14 +12,23 @@ const Routers = () => {
                 <Router>
                     <Routes>
                         <Route
-                            path="/"
+                            path="/admin/dashboard"
                             element={
                                 <ProtectingRoute>
-                                    <Home />
+                                    <AdminDash />
                                 </ProtectingRoute>
                             }
                         />
-                        <Route path="login" element={<Login />} />
+                        <Route
+                            path="/"
+                            element={
+                                <ProtectingRoute>
+                                    <AdminDash />
+                                </ProtectingRoute>
+                            }
+                        />
+                        <Route path="login" element={<LoginT />} />
+                        <Route path="*" element={<div className="bg-slate-700 h-screen p-16 items-center text-white text-3xl">Error 404: Page not Found</div>} />
                     </Routes>
                 </Router>
             </PersistGate>

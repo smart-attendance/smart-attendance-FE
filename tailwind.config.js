@@ -8,11 +8,15 @@ module.exports = {
     },
     extend: {
       colors: {
-        brown: {
-          primary: '#DB9069',
-          secondary: '#DBA569'
+        green: {
+          primary: '#33FF33',
+          secondary: '#8CDBA9',
+          ternary: '#D5F591'
         }
       },
+      backgroundImage: {
+        'cover-side': `url('../src/images/cover.jpg')`
+      }
     },
   },
   plugins: [],
