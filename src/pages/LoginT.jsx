@@ -27,7 +27,7 @@ function LoginT() {
           <div className={`bg-[#f1c7b2] rounded-lg shadow-2xl w-3/4 p-12 ${!animation ? `animate__bounceIn block` : `animate__bounceOut hidden`}`}>
             <LoginUser handleAnimation={handleAnimation} />
           </div>
-          <div className={`bg-green-400 rounded-lg shadow-2xl w-3/4 p-12 ${animation ? `animate__bounceIn block` : `animate__bounceOut hidden`}`}>
+          <div className={`bg-green-primary rounded-lg shadow-2xl w-3/4 p-12 ${animation ? `animate__bounceIn block` : `animate__bounceOut hidden`}`}>
             <LoginAdmin handleAnimation={handleAnimation} />
           </div>
         </div>
