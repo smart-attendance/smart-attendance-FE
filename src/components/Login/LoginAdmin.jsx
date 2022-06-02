@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { saveUser } from "../../redux/sliceUser";
 import LockIcon from "@mui/icons-material/Lock";
+import axios from "axios";
 
 function LoginAdmin({handleAnimation}) {
 
@@ -32,8 +33,14 @@ function LoginAdmin({handleAnimation}) {
 
     // a function that handle submit to sign in / log in
     const handleSignIn = () => {
-        dispatch(saveUser({ username: inputData.username }));
-        navigate(`/admin/dashboard`);
+        axios.post(`https://smart-attendance-be.herokuapp.com/api/auth/admin/login`, inputData)
+        .then(res => {
+            dispatch(saveUser({ username: res.data.data.username, token: res.data.data.accessToken }));
+            navigate(`/admin/dashboard`);
+        })
+        .catch(err => {
+            console.log(err);
+        });
     };
 
     return (
