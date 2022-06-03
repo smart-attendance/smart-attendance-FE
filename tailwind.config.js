@@ -27,10 +27,22 @@ module.exports = {
           transform: "scale(2)",
           opacity: "0%"
         }
+      },
+      rotate: {
+        "0%": {
+          transform: "scale(1) rotate(360deg)"
+        },
+        "50%": {
+          transform: "scale(0.8) rotate(-360deg)"
+        },
+        "100%": {
+          transform: "scale(1) rotate(360deg)"
+        }
       }
     },
     animation: {
-      ping: "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite"
+      ping: "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite",
+      rotate: "rotate 5s linear infinite",
     }
   },
   plugins: [],

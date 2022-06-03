@@ -19,6 +19,23 @@
     }
 
     .button-primary {
-        @apply transition ease-in-out duration-100 hover:-translate-y-1 hover:shadow-lg hover:shadow-green-primary rounded hover:border hover:border-white hover:bg-green-secondary hover:cursor-pointer hover:text-black
+        @apply transition ease-in-out duration-100 hover:-translate-y-1 hover:shadow-lg hover:shadow-green-primary rounded border border-transparent hover:border-white hover:bg-green-secondary hover:cursor-pointer hover:text-black
+    }
+
+    .loader {
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        border: 5px solid #162534;
+        border-top-color: #4bc8eb;
+        border-bottom-color: #f12a8f;
+        border-radius: 50%;
+        @apply animate-rotate;
+    }
+
+    .loader-inner {
+        border-top-color: @apply bg-green-primary;
+        border-bottom-color: #fff;
+        animation-duration: 2.5s;
     }
 }

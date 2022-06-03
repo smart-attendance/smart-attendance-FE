@@ -1,57 +1,31 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { AddUser, Loading, Navbar, SideBar, UserList } from "../../components";
 import { Transition } from "@headlessui/react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { AddSchedule, Loading, Navbar, ScheduleList, SideBar } from "../../components";
 
-function Users() {
-    
+function Schedules() {
+
     const user = useSelector((state) => state.user.users);
     const token = useSelector((state) => state.user.users.token);
 
     const [showing, setShowing] = useState(1);
     const [isLoading, setIsloading] = useState(true);
-    const [users, setUsers] = useState([]);
+    const [schedules, setSchedules] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://smart-attendance-be.herokuapp.com/api/user`, {headers: {"Authorization": "Bearer " + token}})
+        axios.get(`https://smart-attendance-be.herokuapp.com/api/schedule/`, {headers: {"Authorization": "Bearer " + token}})
         .then(res => {
-            setUsers(res.data.data);
+            setSchedules(res.data.data);
             setIsloading(false);
         })
         .catch(err => {
             console.log(err);
+            setIsloading(false);
         })
-    }, [users]);
+    }, [schedules]);
 
-    // const users = [
-    //     {
-    //         "id": 1,
-    //         "name": "Tius",
-    //         "last_present": "2022-05-28",
-    //         "percent": "100"
-    //     },
-    //     {
-    //         "id": 2,
-    //         "name": "Tuis",
-    //         "last_present": "2022-05-28",
-    //         "percent": "100"
-    //     },
-    //     {
-    //         "id": 3,
-    //         "name": "Tisu",
-    //         "last_present": "2022-05-28",
-    //         "percent": "100"
-    //     },
-    //     {
-    //         "id": 4,
-    //         "name": "Tusi",
-    //         "last_present": "2022-05-28",
-    //         "percent": "100"
-    //     },
-    // ]
-
-    function handleShow(e) {
+    function handlerShow(e) {
         setShowing(e);
     }
 
@@ -76,11 +50,11 @@ function Users() {
                             <div className="grid grid-cols-2 lg:grid-cols-12 px-5 py-2">
                                 <div className="col-span-1 lg:col-span-3 gap-3 flex flex-col items-center">
                                     <button className="button-primary bg-green-primary p-2 w-fit" onClick={() => setShowing(2)}>
-                                        Add User
+                                        Add Schedules
                                     </button>
                                 </div>
                                 <div className="col-span-1 lg:col-span-9">
-                                    <UserList users={users} />
+                                    <ScheduleList schedules={schedules} />
                                 </div>
                             </div>
                         </Transition>
@@ -94,10 +68,8 @@ function Users() {
                             leaveFrom="opacity-100"
                             leaveTo="opacity-0"
                         >
-                            <div className="grid grid-cols-2 lg:grid-cols-12 px-5 py-2">
-                                <div className="col-span-2 lg:col-span-12 gap-3 flex flex-col items-center">
-                                    <AddUser showing={handleShow} />
-                                </div>
+                            <div className="grid grid-cols-1 lg:grid-cols-12 px-5 py-2">
+                                <AddSchedule showing={handlerShow} />
                             </div>
                         </Transition>
                     </React.Fragment>
@@ -107,4 +79,4 @@ function Users() {
     )
 }
 
-export default Users;
+export default Schedules;

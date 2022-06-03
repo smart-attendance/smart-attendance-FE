@@ -2,7 +2,7 @@ import { Provider } from "react-redux"
 import { PersistGate } from "redux-persist/integration/react"
 import { persistor, store } from "../redux/store"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { AdminDash, Home, LoginT, Users } from "../pages";
+import { AdminDash, Attendances, LoginT, Schedules, Users } from "../pages";
 import ProtectingRoute from "./protectingRoute";
 
 const Routers = () => {
@@ -32,6 +32,22 @@ const Routers = () => {
                             element={
                                 <ProtectingRoute>
                                     <Users />
+                                </ProtectingRoute>
+                            }
+                        />
+                        <Route
+                            path="/admin/attendances"
+                            element={
+                                <ProtectingRoute>
+                                    <Attendances />
+                                </ProtectingRoute>
+                            }
+                        />
+                        <Route
+                            path="/admin/schedules"
+                            element={
+                                <ProtectingRoute>
+                                    <Schedules />
                                 </ProtectingRoute>
                             }
                         />
