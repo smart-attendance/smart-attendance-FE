@@ -2,14 +2,14 @@ import { Transition } from "@headlessui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Loading, Navbar, ScheduleList, SideBar } from "../../components";
+import { AddSchedule, Loading, Navbar, ScheduleList, SideBar } from "../../components";
 
 function Schedules() {
 
     const user = useSelector((state) => state.user.users);
     const token = useSelector((state) => state.user.users.token);
 
-    const [showing, setShowing] = useState(false);
+    const [showing, setShowing] = useState(1);
     const [isLoading, setIsloading] = useState(true);
     const [schedules, setSchedules] = useState([]);
 
@@ -23,8 +23,11 @@ function Schedules() {
             console.log(err);
             setIsloading(false);
         })
-        setShowing(true);
-    }, []);
+    }, [schedules]);
+
+    function handlerShow(e) {
+        setShowing(e);
+    }
 
     return (
         <React.Fragment>
@@ -36,7 +39,7 @@ function Schedules() {
                 ) : (
                     <React.Fragment>
                         <Transition
-                            show={showing}
+                            show={showing === 1}
                             enter="transform duration-1000"
                             enterFrom="translate-y-full opacity-0"
                             enterTo="translate-y-0 opacity-100"
@@ -53,6 +56,20 @@ function Schedules() {
                                 <div className="col-span-1 lg:col-span-9">
                                     <ScheduleList schedules={schedules} />
                                 </div>
+                            </div>
+                        </Transition>
+
+                        <Transition
+                            show={showing === 2}
+                            enter="transform duration-1000"
+                            enterFrom="translate-y-full opacity-0"
+                            enterTo="translate-y-0 opacity-100"
+                            leave="duration-100"
+                            leaveFrom="opacity-100"
+                            leaveTo="opacity-0"
+                        >
+                            <div className="grid grid-cols-1 lg:grid-cols-12 px-5 py-2">
+                                <AddSchedule showing={handlerShow} />
                             </div>
                         </Transition>
                     </React.Fragment>

@@ -1,6 +1,9 @@
 import React from "react";
 
 function AttendList({schedules}) {
+
+    // console.log(schedules);
+
     return (
         <div>
             <table className="table-auto">
@@ -15,7 +18,7 @@ function AttendList({schedules}) {
                 <tbody>
                     {schedules?.map((item, id) => (
                         <tr key={id}>
-                            <td>{item.id}</td>
+                            <td>{item.id ? item.id : `No. ${id+1}`}</td>
                             <td className="px-4">{item.date}</td>
                             <td className="px-4">{item.latitude}</td>
                             <td className="px-4">{item.longitude}</td>

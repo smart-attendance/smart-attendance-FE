@@ -8,3 +8,4 @@ export {default as PresentChart} from './Admin/PresentChart';
 export {default as AddUser} from './Admin/AddUser';
 export {default as Loading} from './Loading';
 export {default as ScheduleList} from './Admin/ScheduleList';
+export {default as AddSchedule} from './Admin/AddSchedule';
