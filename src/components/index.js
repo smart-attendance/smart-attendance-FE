@@ -9,3 +9,5 @@ export {default as AddUser} from './Admin/AddUser';
 export {default as Loading} from './Loading';
 export {default as ScheduleList} from './Admin/ScheduleList';
 export {default as AddSchedule} from './Admin/AddSchedule';
+export {default as EditUser} from './Admin/EditUser';
+export {default as EditSchedule} from './Admin/EditSchedule';
