@@ -100,8 +100,8 @@ function Attendances() {
                                     <label>User ID</label>
                                     <select onChange={(e) => handleChange(e.target.value)} value={filterUser} className="border-black border rounded w-2/3 p-1">
                                         <option value="All Users">All Users</option>
-                                        {users.map(item => (
-                                            <option key={item} value={item.id}>{item.nip}</option>
+                                        {users.map((item, id) => (
+                                            <option key={id} value={item.id}>{item.nip}</option>
                                         ))}
                                     </select>
                                     

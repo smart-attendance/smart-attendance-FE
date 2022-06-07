@@ -48,10 +48,10 @@ function AttendList({showing, attendances, attendance}) {
                     </thead>
                     <tbody>
                         {attendances?.map((item, id) => (
-                            <tr key={id}>
+                            <tr key={id} className="text-sm">
                                 <td>{item.id}</td>
                                 <td className="px-4">{item.userNip}</td>
-                                <td className="px-4">{item.time}</td>
+                                <td className="px-4">{item.date + " " + item.time}</td>
                                 <td className="px-4">{item.attendanceStatus}</td>
                                 <td className="px-4">{item.note === "" ? "-" : item.note}</td>
                                 <td className="px-4">
