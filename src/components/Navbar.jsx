@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { deleteUser } from '../redux/sliceUser'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import moment from 'moment'
 
@@ -19,8 +19,10 @@ function Navbar({user}) {
         navigate("/");
     }
     return (
-        <div className='bg-green-primary p-4 flex justify-between'>
-            <div>Smart Attendance</div>
+        <div className='bg-green-primary p-4 flex justify-between items-center'>
+            <Link to={`/`}>
+                <div className='p-1 text-lg font-semibold hover:bg-green-ternary rounded cursor-pointer hover:shadow-xl transition ease-in-out duration-200'>Smart Attendance</div>
+            </Link>
             <div className='flex space-x-3'>
                 <div>{moment(Date.now()).format("DD MMMM, YYYY")}</div>
                 <div>|</div>
