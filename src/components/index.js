@@ -11,3 +11,5 @@ export {default as ScheduleList} from './Admin/ScheduleList';
 export {default as AddSchedule} from './Admin/AddSchedule';
 export {default as EditUser} from './Admin/EditUser';
 export {default as EditSchedule} from './Admin/EditSchedule';
+export {default as AddAttendance} from './Admin/AddAttendance';
+export {default as EditAttendance} from './Admin/EditAttendance';

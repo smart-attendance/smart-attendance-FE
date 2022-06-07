@@ -27,7 +27,7 @@ function EditUser({showing, schedule}) {
         setIsloading(true);
         axios.put(`https://smart-attendance-be.herokuapp.com/api/schedule/${inputData.id}`, inputData, {headers: {"Authorization": "Bearer " + token}})
         .then(res => {
-            window.alert('data has been Edited!');
+            window.alert('data has been updated!');
             setIsloading(false);
             showing(1);
         })

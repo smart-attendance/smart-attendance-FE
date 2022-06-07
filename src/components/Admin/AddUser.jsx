@@ -21,7 +21,6 @@ function AddUser({showing}) {
             ...inputData,
             [e.target.name]: e.target.value
         });
-        console.log(inputData);
     }
 
     function handleSubmit() {

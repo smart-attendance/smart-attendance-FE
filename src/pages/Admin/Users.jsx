@@ -25,33 +25,6 @@ function Users() {
         })
     }, [users]);
 
-    // const users = [
-    //     {
-    //         "id": 1,
-    //         "name": "Tius",
-    //         "last_present": "2022-05-28",
-    //         "percent": "100"
-    //     },
-    //     {
-    //         "id": 2,
-    //         "name": "Tuis",
-    //         "last_present": "2022-05-28",
-    //         "percent": "100"
-    //     },
-    //     {
-    //         "id": 3,
-    //         "name": "Tisu",
-    //         "last_present": "2022-05-28",
-    //         "percent": "100"
-    //     },
-    //     {
-    //         "id": 4,
-    //         "name": "Tusi",
-    //         "last_present": "2022-05-28",
-    //         "percent": "100"
-    //     },
-    // ]
-
     function handleShow(e) {
         setShowing(e);
     }

@@ -7,13 +7,12 @@ function EditUser({showing, user}) {
 
     const token = useSelector((state) => state.user.users.token);
     const initialState = {
+        id: user.id,
         nip: user.nip,
         fullName: user.fullName,
-        password: user.password
     }
 
     const [inputData, setInputData] = useState(initialState);
-    const [toggle, setToggle] = useState(true);
     const [isLoading, setIsloading] = useState(false);
     
     function handleChange(e) {
@@ -26,9 +25,9 @@ function EditUser({showing, user}) {
 
     function handleSubmit() {
         setIsloading(true);
-        axios.post(`https://smart-attendance-be.herokuapp.com/api/user/register`, inputData, {headers: {"Authorization": "Bearer " + token}})
+        axios.put(`https://smart-attendance-be.herokuapp.com/api/user/update`, inputData, {headers: {"Authorization": "Bearer " + token}})
         .then(res => {
-            window.alert('data has been added!');
+            window.alert('data has been updated!');
             setIsloading(false);
             showing(1);
         })

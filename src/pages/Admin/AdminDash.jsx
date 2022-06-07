@@ -91,7 +91,7 @@ function AdminDash() {
                                     <AttendList attendances={attendances.slice(0, 3)} />
                                     <div className="my-2"></div>
                                     {attendances.length > 3 ? 
-                                        <Link to={`/`}>
+                                        <Link to={`/admin/attendances`}>
                                             <p className="button-primary p-2">Show More...</p> 
                                         </Link> 
                                         : 
