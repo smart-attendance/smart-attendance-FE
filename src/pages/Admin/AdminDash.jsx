@@ -12,65 +12,23 @@ function AdminDash() {
     const user = useSelector((state) => state.user.users);
     const token = useSelector((state => state.user.users.token));
 
-    // const users = [
-    //     {
-    //         "id": 1,
-    //         "name": "Tius",
-    //         "last_present": "2022-05-28",
-    //         "percent": "100"
-    //     },
-    //     {
-    //         "id": 2,
-    //         "name": "Tuis",
-    //         "last_present": "2022-05-28",
-    //         "percent": "100"
-    //     },
-    //     {
-    //         "id": 3,
-    //         "name": "Tisu",
-    //         "last_present": "2022-05-28",
-    //         "percent": "100"
-    //     },
-    //     {
-    //         "id": 4,
-    //         "name": "Tusi",
-    //         "last_present": "2022-05-28",
-    //         "percent": "100"
-    //     },
-    // ]
-
-    const attendances = [
-        {
-            "id": 1,
-            "name": "Tius",
-            "time": "2022-06-1 07:30"
-        },
-        {
-            "id": 2,
-            "name": "Tuis",
-            "time": "2022-05-29 07:30"
-        },
-        {
-            "id": 3,
-            "name": "Tisu",
-            "time": "2022-05-30 07:30"
-        },
-        {
-            "id": 4,
-            "name": "Tusi",
-            "time": "2022-05-29 07:30"
-        },
-    ]
-
     const [isShowing, setIsShowing] = useState(false);
     const [isLoading, setIsloading] = useState(true);
     const [users, setUsers] = useState([]);
-    // const [attendances, setAttendances] = useState([]);
+    const [attendances, setAttendances] = useState([]);
 
     useEffect(() => {
         axios.get(`https://smart-attendance-be.herokuapp.com/api/user`, {headers: {"Authorization": "Bearer " + token}})
         .then(res => {
             setUsers(res.data.data);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+        axios.get(`https://smart-attendance-be.herokuapp.com/api/attendance/`, {headers: {"Authorization": "Bearer " + token}})
+        .then(res => {
+            setAttendances(res.data.data);
             setIsloading(false);
             setIsShowing(true);
         })
@@ -78,7 +36,6 @@ function AdminDash() {
             console.log(err);
         })
 
-        // axios.get(`https://smart-attendance-be.herokuapp.com/api/attendances`, {headers: {"Authorization": "Bearer " + token}})
     }, []);
 
     return (
