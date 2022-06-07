@@ -6,17 +6,21 @@ function AttendList({attendances}) {
             <table className="table-auto">
                 <thead>
                     <tr>
-                        <th>User ID</th>
-                        <th className="px-4">User Name</th>
-                        <th className="px-4">At Time</th>
+                        <th>ID</th>
+                        <th className="px-4">User ID</th>
+                        <th className="px-4">Time</th>
+                        <th className="px-4">Status</th>
+                        <th className="px-4">Note</th>
                     </tr>
                 </thead>
                 <tbody>
                     {attendances?.map((item, id) => (
                         <tr key={id}>
                             <td>{item.id}</td>
-                            <td className="px-4">{item.name}</td>
+                            <td>{ /* item.user.id */ } - </td>
                             <td className="px-4">{item.time}</td>
+                            <td className="px-4">{item.attendanceStatus}</td>
+                            <td className="px-4">{item.note === "" ? "-" : item.note}</td>
                         </tr>
                     ))}
                 </tbody>
