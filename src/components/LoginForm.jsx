@@ -43,10 +43,9 @@ function LoginForm({ isOpen, closeModal }) {
       )
       .then((res) => {
         setIsLoading(false);
-        const username = jwt_decode(res.data.data.accessToken)?.sub.split(",")[2];
         dispatch(
           saveUser({
-            username: username,
+            username: jwt_decode(res.data.data.accessToken)?.sub.split(",")[2],
             token: res.data.data.accessToken,
           })
         );

@@ -2,9 +2,8 @@ import React, { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { deleteUser } from "../redux/sliceUser";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import moment from "moment";
 import { ReactComponent as Logo } from "../images/logo.svg";
 import Button from "./Button";
 
