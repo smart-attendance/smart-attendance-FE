@@ -4,12 +4,37 @@
 
 @layer base {
     @font-face {
-        font-family: 'OpenSans';
-        src: local('OpenSans'), url('./fonts/OpenSans.ttf') format('truetype');
+        font-family: 'MaisonNeue';
+        src: local('MaisonNeue-Thin'), url('./fonts/MaisonNeue-Thin.otf') format('opentype');
+        font-weight: 100;
+    }
+
+    @font-face {
+        font-family: 'MaisonNeue';
+        src: local('MaisonNeue-Light'), url('./fonts/MaisonNeue-Light.otf') format('opentype');
+        font-weight: 300;
+    }
+
+    @font-face {
+        font-family: 'MaisonNeue';
+        src: local('MaisonNeue-Book'), url('./fonts/MaisonNeue-Book.otf') format('opentype');
+        font-weight: 400;
+    }
+
+    @font-face {
+        font-family: 'MaisonNeue';
+        src: local('MaisonNeue'), url('./fonts/MaisonNeue.otf') format('opentype');
+        font-weight: 500;
+    }
+
+    @font-face {
+        font-family: 'MaisonNeue';
+        src: local('MaisonNeue-Bold'), url('./fonts/MaisonNeue-Bold.otf') format('opentype');
+        font-weight: 700;
     }
 
     html {
-        font-family: "OpenSans"
+        font-family: "MaisonNeue"
     }
 }
 

@@ -5,8 +5,10 @@ import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import moment from 'moment'
+import { ReactComponent as Logo } from '../images/logo.svg';
+import Button from './Button'
 
-function Navbar({user}) {
+function Navbar({user, color, clickHandler}) {
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ')
     }
@@ -19,23 +21,19 @@ function Navbar({user}) {
         navigate("/");
     }
     return (
-        <div className='bg-green-primary p-4 flex justify-between items-center'>
-            <Link to={`/`}>
-                <div className='p-1 text-lg font-semibold hover:bg-green-ternary rounded cursor-pointer hover:shadow-xl transition ease-in-out duration-200'>Smart Attendance</div>
-            </Link>
-            <div className='flex space-x-3'>
-                <div>{moment(Date.now()).format("DD MMMM, YYYY")}</div>
-                <div>|</div>
-                <div>{user}</div>
+        <div className={classNames(color ? `bg-[${color}]` : 'bg-white', 'absolute z-10 w-full top-0 py-1 px-12 lg:px-32 flex justify-between items-center drop-shadow-lg')}>
+            <div>
+                <Logo className='w-3/5'/>
+            </div>
+            <div className='flex space-x-2'>
+                {user ? (
+                <>
+                <p className='font-light'>Selamat datang,</p>
+                <div className='font-bold'>{user}</div>
                 <Menu as="div" className="ml-3 relative">
                     <div>
                         <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                             <span className="sr-only">Open user menu</span>
-                            {/* <img
-                                className="h-8 w-8 rounded-full"
-                                src={imgAcc}
-                                alt=""
-                            /> */}
                             <AccountCircleIcon className='text-white' />
                         </Menu.Button>
                     </div>
@@ -62,6 +60,11 @@ function Navbar({user}) {
                         </Menu.Items>
                     </Transition>
                 </Menu>
+                </>
+                )
+                :
+                (<Button text="Login" clickHandler={clickHandler} />)
+                }
             </div>
         </div>
     )
