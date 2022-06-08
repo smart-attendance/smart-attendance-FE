@@ -4,7 +4,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      primary: ['OpenSans', 'sans-serif'],
+      primary: ['MaisonNeue', 'monospace'],
     },
     extend: {
       colors: {

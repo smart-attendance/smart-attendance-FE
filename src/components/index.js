@@ -13,3 +13,6 @@ export {default as EditUser} from './Admin/EditUser';
 export {default as EditSchedule} from './Admin/EditSchedule';
 export {default as AddAttendance} from './Admin/AddAttendance';
 export {default as EditAttendance} from './Admin/EditAttendance';
+export {default as Button } from './Button';
+export {default as Footer} from './Footer';
+export {default as LoginForm} from './LoginForm';
