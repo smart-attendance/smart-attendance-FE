@@ -45,7 +45,7 @@ function LoginAdmin({handleAnimation}) {
         })
         .catch(err => {
             setIsLoading(false);
-            setErrors("Unauthenticated!")
+            setErrors("Unauthenticated!");
             console.log(err);
         });
     };

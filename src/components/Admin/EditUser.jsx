@@ -3,17 +3,16 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Loading from "../Loading";
 
-function AddUser({showing}) {
+function EditUser({showing, user}) {
 
     const token = useSelector((state) => state.user.users.token);
     const initialState = {
-        nip: "",
-        fullName: "",
-        password: ""
+        id: user.id,
+        nip: user.nip,
+        fullName: user.fullName,
     }
 
     const [inputData, setInputData] = useState(initialState);
-    const [toggle, setToggle] = useState(true);
     const [isLoading, setIsloading] = useState(false);
     
     function handleChange(e) {
@@ -21,13 +20,14 @@ function AddUser({showing}) {
             ...inputData,
             [e.target.name]: e.target.value
         });
+        console.log(inputData);
     }
 
     function handleSubmit() {
         setIsloading(true);
-        axios.post(`https://smart-attendance-be.herokuapp.com/api/user/register`, inputData, {headers: {"Authorization": "Bearer " + token}})
+        axios.put(`https://smart-attendance-be.herokuapp.com/api/user/update`, inputData, {headers: {"Authorization": "Bearer " + token}})
         .then(res => {
-            window.alert('data has been added!');
+            window.alert('data has been updated!');
             setIsloading(false);
             showing(1);
         })
@@ -48,23 +48,17 @@ function AddUser({showing}) {
             <div className="flex flex-col gap-4 w-2/3">
                 <div>
                     <label>NIP</label>
-                    <input type='text' name="nip" id="nip" className="border-black border rounded w-full p-1" onChange={handleChange}></input>
+                    <input type='text' name="nip" id="nip" className="border-black border rounded w-full p-1" onChange={handleChange} value={inputData.nip}></input>
                 </div>
                 
                 <div>
                     <label>Full Name</label>
-                    <input type='text' name="fullName" id="fullName" className="border-black border rounded w-full p-1" onChange={handleChange}></input>
-                </div>
-
-                <div>
-                    <label>Password</label>
-                    <input type={toggle ? `password` : `text`} name="password" id="password" className="border-black border rounded w-full p-1" onChange={handleChange}></input>
-                    <button className="button-primary bg-blue-300 w-fit p-2 border border-black mt-3" onClick={() => setToggle(!toggle)}>Toggle Password</button>
+                    <input type='text' name="fullName" id="fullName" className="border-black border rounded w-full p-1" onChange={handleChange} value={inputData.fullName}></input>
                 </div>
 
                 <div className="flex items-center gap-5">
                     <button className="button-primary bg-green-ternary w-fit p-2 border border-black" onClick={handleSubmit}>
-                        Add User
+                        Edit User
                     </button>
                     <button className="button-primary bg-red-300 w-fit p-2 border border-black" onClick={() => showing(1)}>
                         Back
@@ -75,4 +69,4 @@ function AddUser({showing}) {
     )
 }
 
-export default AddUser;
+export default EditUser;

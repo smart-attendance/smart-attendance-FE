@@ -12,7 +12,7 @@ function PresentChart({absensi}) {
         const arr = [0, 0, 0, 0, 0, 0, 0];
 
         absensi.map(item => {
-            const id = Math.floor((now - Date.parse(item.time)) / (1000 * 3600 * 24));
+            const id = Math.floor((now - Date.parse(item.date)) / (1000 * 3600 * 24));
             if (id <= 7) {
                 arr[id]++
             }
