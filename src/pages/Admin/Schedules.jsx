@@ -38,7 +38,7 @@ function Schedules() {
         <React.Fragment>
             <SideBar />
             <div className="ml-16">
-                <Navbar user={user?.username} />
+                {/* <Navbar user={user?.username} /> */}
                 {isLoading ? (
                     <Loading />
                 ) : (

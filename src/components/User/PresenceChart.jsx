@@ -33,16 +33,16 @@ function PresenceChart({ presenceData }) {
   }, [presenceData]);
 
   return (
-    <div className="w-6/12">
+    <div className="ml-4 w-6/12">
       <div className="relative flex justify-center items-center">
-        <Doughnut
+        <Doughnut className="hover:z-10"
           data={data}
           options={{
             responsive: true,
             plugins: { legend: { display: false } },
           }}
         />
-        <div className="absolute font-bold text-[#66BB6A] text-5xl">
+        <div className="absolute font-bold text-[#66BB6A] text-5xl z-0">
           {percentage}
         </div>
       </div>

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { saveUser } from "../redux/sliceUser";
 import Loading from "./Loading";
 import jwt_decode from "jwt-decode";
+import ButtonDisabled from "./ButtonDisabled";
 
 function LoginForm({ isOpen, closeModal }) {
   function classNames(...classes) {
@@ -129,18 +130,13 @@ function LoginForm({ isOpen, closeModal }) {
                   "flex justify-center"
                 )}
               >
-                <button
-                  type="submit"
-                  disabled={inputData.nip && inputData.password ? false : true}
-                  className={classNames(
-                    inputData.nip && inputData.password
-                      ? "bg-[#29B6F6] hover:bg-[#66CFFF]"
-                      : "bg-[#D8D8D8]",
-                    "py-2 px-8 border border-green text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0288D1]"
-                  )}
-                >
-                  Login
-                </button>
+                <ButtonDisabled
+                  isDisabled={
+                    inputData.nip && inputData.password ? false : true
+                  }
+                  isFilled={inputData.nip && inputData.password}
+                  text={"Login"}
+                />
               </div>
             </form>
           </div>

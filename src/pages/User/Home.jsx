@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import {
   Footer,
   Loading,
+  NoteModal,
   PresenceChart,
   ScheduleCard,
   SuccessModal,
@@ -17,12 +18,18 @@ function Home() {
   const token = user?.token;
   const userId = jwt_decode(user?.token)?.sub.split(",")[0];
   const [isInside, setIsInside] = useState();
-  const [todaySchedule, setTodaySchedule] = useState();
+  const [todaySchedule, setTodaySchedule] = useState(null);
   const [attendanceList, setAttendanceList] = useState([]);
   const [isAbsent, setIsAbsent] = useState();
   const [isLoading, setIsloading] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenFalse, setIsOpenFalse] = useState(false);
   const [presenceData, setPresenceData] = useState();
+  const [inputData, setInputData] = useState({
+    note: "",
+    userId: "",
+    scheduleId: "",
+  });
 
   function closeModal() {
     setIsOpen(false);
@@ -30,18 +37,24 @@ function Home() {
   function openModal() {
     setIsOpen(true);
   }
+  function closeModalFalse() {
+    setIsOpenFalse(false);
+  }
+  function openModalFalse() {
+    setIsOpenFalse(true);
+  }
   function handleAbsent() {
     if (isInside) {
       setIsloading(true);
-      const data = {
-        note: "",
-        scheduleId: todaySchedule?.id,
-        userId: userId,
-      };
+      // const data = {
+      //   note: "",
+      //   scheduleId: todaySchedule?.id,
+      //   userId: userId,
+      // };
       axios
         .post(
           "https://smart-attendance-be.herokuapp.com/api/attendance/",
-          data,
+          inputData,
           {
             headers: {
               "Content-Type": "application/json",
@@ -51,6 +64,7 @@ function Home() {
         )
         .then((resp) => {
           if (resp?.status === 200) {
+            closeModalFalse();
             openModal();
             setIsloading(false);
           }
@@ -59,8 +73,43 @@ function Home() {
           console.log(err);
         });
     } else {
+      openModalFalse();
     }
   }
+  const handleInput = (e) => {
+    const value = e.target.value;
+    setInputData({
+      ...inputData,
+      note: value,
+    });
+  };
+  console.log(inputData);
+  const handleSubmitNote = (e) => {
+    setIsloading(true);
+    axios
+      .post(
+        "https://smart-attendance-be.herokuapp.com/api/attendance/",
+        inputData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((resp) => {
+        if (resp?.status === 200) {
+          openModal();
+          setIsloading(false);
+          closeModalFalse();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsloading(false);
+      });
+    e.preventDefault();
+  };
   var hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
   var bulan = [
     "Januari",
@@ -89,9 +138,6 @@ function Home() {
         setTodaySchedule(resp?.data.data);
         setIsloading(false);
       })
-      .catch((err) => {
-        console.log(err);
-      });
   }, [token]);
 
   useEffect(() => {
@@ -147,6 +193,14 @@ function Home() {
       });
   }, [userId, token]);
 
+  useEffect(() => {
+    setInputData({
+      ...inputData,
+      scheduleId: todaySchedule?.id,
+      userId: userId,
+    });
+  }, [userId, todaySchedule]);
+
   return (
     <div className="min-h-screen relative bg-[#F3F5F6]">
       {isLoading ? <Loading /> : null}
@@ -177,6 +231,13 @@ function Home() {
         </div>
       </div>
       <SuccessModal isOpen={isOpen} closeModal={closeModal} />
+      <NoteModal
+        inputData={inputData}
+        handleInput={handleInput}
+        isOpenFalse={isOpenFalse}
+        closeModalFalse={closeModalFalse}
+        handleSubmitNote={handleSubmitNote}
+      />
       <Footer />
     </div>
   );

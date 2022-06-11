@@ -19,3 +19,4 @@ export { default as LoginForm } from "./LoginForm";
 export { default as ScheduleCard } from "./User/ScheduleCard";
 export { default as SuccessModal } from "./User/SuccessModal";
 export { default as PresenceChart } from "./User/PresenceChart";
+export { default as NoteModal } from "./User/NoteModal";
