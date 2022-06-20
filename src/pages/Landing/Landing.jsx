@@ -33,11 +33,13 @@ function Landing() {
   return (
     <>
       <div className="bg-[#FCFAF8] min-h-screen relative">
-        <Navbar
-          user={user?.username}
-          color={"#FCFAF8"}
-          clickHandler={openModal}
-        />
+        <div className="absolute top-0 w-full">
+          <Navbar
+            user={user?.username}
+            color={"#FCFAF8"}
+            clickHandler={openModal}
+          />
+        </div>
         <div className="flex flex-col relative gap-3 justify-center items-center h-screen text-center">
           <p className="font-light text-md lg:text-xl">
             Employee Attendance Smart Solution

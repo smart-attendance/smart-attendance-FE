@@ -41,8 +41,8 @@ function AdminDash() {
     return (
         <React.Fragment>
             <SideBar />
-            <div className="ml-16">
                 <Navbar user={user?.username} />
+            <div className="ml-16">
                 {isLoading ? (
                     <Loading />
                 ) : (

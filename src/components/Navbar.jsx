@@ -23,7 +23,7 @@ function Navbar({ user, color, clickHandler }) {
     <div
       className={classNames(
         color ? `bg-[${color}]` : "bg-white",
-        "absolute w-full top-0 z-10 py-1 px-12 lg:px-32 flex justify-between items-center drop-shadow-lg"
+        "sticky w-full top-0 z-10 py-1 px-12 lg:px-32 flex justify-between items-center drop-shadow-lg"
       )}
     >
       <div>

@@ -205,7 +205,7 @@ function Home() {
     <div className="min-h-screen relative bg-[#F3F5F6]">
       {isLoading ? <Loading /> : null}
       <Navbar user={user?.username} />
-      <div className="grid grid-cols-1 lg:grid-cols-9 gap-12 relative  lg:py-28">
+      <div className="grid grid-cols-1 lg:grid-cols-9 gap-12 relative lg:py-28">
         <div className="lg:col-span-2"></div>
         <div className="lg:col-span-3 col-span-1">
           <div className="text-2xl mb-4">{`${
