@@ -8,7 +8,7 @@ function ProtectingRoute(props) {
   const user = useSelector((state) => state?.user?.users);
 
   useEffect(() => {
-    if (user?.username === "") {
+    if (user?.username.length === 0) {
       navigate("/");
     } else if (jwt_decode(user?.token)?.role === "admin") {
       navigate("/admin/dashboard");

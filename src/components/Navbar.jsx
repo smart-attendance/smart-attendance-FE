@@ -2,9 +2,8 @@ import React, { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { deleteUser } from "../redux/sliceUser";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import moment from "moment";
 import { ReactComponent as Logo } from "../images/logo.svg";
 import Button from "./Button";
 
@@ -24,7 +23,7 @@ function Navbar({ user, color, clickHandler }) {
     <div
       className={classNames(
         color ? `bg-[${color}]` : "bg-white",
-        "absolute w-full top-0 z-10 py-1 px-12 lg:px-32 flex justify-between items-center drop-shadow-lg"
+        "sticky w-full top-0 z-10 py-1 px-12 lg:px-32 flex justify-between items-center drop-shadow-lg"
       )}
     >
       <div>

@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 function SideBar() {
 
     return (
-        <div className={`sidebar flex flex-col gap-2 text-white z-10 fixed top-0 left-0`}>
+        <div className={`sidebar flex flex-col gap-2 text-white z-20 fixed top-0 left-0`}>
             <div className="m-4">MENU</div>
-            <Link to={`/`}>
+            <Link to={`/admin/dashboard`}>
                 <div className="mx-2 ml-5 py-2 flex items-center relative button-primary">
                     <div className={`ml-10`}>Dashboard</div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" fill="currentColor" className="absolute right-3" viewBox="0 0 16 16">
